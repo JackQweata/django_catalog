@@ -27,8 +27,8 @@ class Command(BaseCommand):
             }
         ]
 
-        Categorys_d = []
+        categorys_d = []
         for item in catalog_test:
-            Categorys_d.append(Category(**item))
+            categorys_d.append(Category(**item))
 
-        Category.objects.bulk_create(Categorys_d)
+        Category.objects.bulk_create(categorys_d)
