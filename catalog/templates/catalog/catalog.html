@@ -1,4 +1,4 @@
-{% extends 'catalog/index.html' %}
+{% extends 'catalog/base.html' %}
 {% load media_tags %}
 
 {% block content %}
@@ -13,7 +13,9 @@
 
             {% for item in objict_list %}
             <div class="card" style="width: 18rem;">
-              <img src="{% mediapath item.image %}" class="card-img-top" alt="{{ item.name }}">
+               {% if item.image %}
+                <img src="{% mediapath item.image %}" class="card-img-top" alt="{{ item.name }}">
+              {% endif %}
               <div class="card-body">
                 <h3 class="card-title">{{ item.name }}</h3>
                 <h2 class="card-title pricing-card-title">{{ item.price }} руб.</h2>
