@@ -1,0 +1,23 @@
+{% extends 'catalog/base.html' %}
+{% load media_tags %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Skystore</h1>
+    <p class="lead">Удалить пост "{{ object.title }}"?</p>
+</div>
+
+<div class="container">
+    <div class="row text-center">
+    <div class="container">
+        <div class="row text-center">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-danger">Удалить</button>
+                <a type="button" href="{% url 'posts' %}" class="btn btn-primary">Отмена</a>
+            </form>
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'catalog/base.html' %}
+{% load media_tags %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container">
+  {% if object.preview_image %}
+    <aside class="col-lg-6">
+      <div class="border rounded-4 mb-3 d-flex justify-content-center">
+        <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image">
+          <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="{% mediapath object.preview_image %}">
+        </a>
+      </div>
+    </aside>
+    {% endif %}
+     <main class="col-lg-6">
+        <div class="ps-lg-3">
+          <h4 class="title text-dark">
+            {{ object.title }}
+          </h4>
+            <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>{{ object.views }} просмотров</span>
+        </div>
+         <br>
+          <p>{{ object.content }}</p>
+     </main>
+
+  </div>
+</section>
+{% endblock %}

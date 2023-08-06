@@ -1,0 +1,30 @@
+{% extends 'catalog/base.html' %}
+{% load media_tags %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Skystore</h1>
+
+    <p class="lead">Посты</p>
+    <a type="button" class="btn btn-primary" href="{% url 'post_create' %}">Создать</a>
+</div>
+
+<div class="container">
+    <div class="row text-center">
+
+            {% for item in object_list %}
+                <div class="card" style="width: 18rem;">
+                   {% if item.preview_image %}
+                    <img src="{% mediapath item.preview_image %}" class="card-img-top" alt="{{ item.title }}">
+                  {% endif %}
+                  <div class="card-body">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    <p class="card-text">{{ item.content|truncatechars:100 }}</p>
+                    <a type="button" href="{% url 'post_detail' item.slug %}" class="btn btn-block btn-outline-primary">Смотреть</a>
+                    <a type="button" href="{% url 'post_update' item.slug %}" class="btn btn-block btn-outline-primary">Обновить</a>
+                    <a type="button" href="{% url 'post_delete' item.slug %}" class="btn btn-block btn-danger">Удалить</a>
+                  </div>
+                </div>
+            {%  endfor %}
+    </div>
+{% endblock %}
