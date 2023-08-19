@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -28,6 +29,19 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
+
+    def get_absolute_url(self):
+        return reverse('product', kwargs={'pk': self.pk})
+
+
+class Version(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
+    version_number = models.IntegerField(verbose_name='Версия')
+    version_name = models.CharField(max_length=255, verbose_name='Название версии')
+    is_active = models.BooleanField(default=True, verbose_name='Активная?')
+
+    def __str__(self):
+        return f"Версия: {self.version_number} - {self.version_name}"
 
 
 class BlogPost(models.Model):

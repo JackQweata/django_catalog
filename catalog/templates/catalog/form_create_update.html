@@ -1,0 +1,28 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Skystore</h1>
+    <p class="lead">{{ title }} {{ object.title }}</p>
+</div>
+
+<div class="container">
+    <div class="text-center">
+        <div class="col-12">
+            <form method="post" enctype="multipart/form-data" class="row">
+                <div class="col-6">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Изменить">
+                </div>
+                <div class="col-6">
+                    {{ formset.management_form }}
+                    {% for item in formset.forms %}
+                        {{ item.as_p }}
+                    {% endfor %}
+                </div>
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
