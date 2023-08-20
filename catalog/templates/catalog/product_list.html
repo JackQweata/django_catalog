@@ -7,7 +7,7 @@
     <h1 class="display-4">Skystore</h1>
     <p class="lead">Skystore - это отличный вариант хранения ваших плагинов и примеров кода, который вы бы хотели
         продать</p>
-    <a type="button" class="btn btn-primary" href="{% url 'product_create' %}">Создать</a>
+    <a type="button" class="btn btn-primary" href="{% url 'catalog:product_create' %}">Создать</a>
 </div>
 
 <div class="container">
@@ -24,9 +24,9 @@
                 <p class="card-text">{% lastversionproduct item %}</p>
                 <p class="card-text">{{ item.description|truncatechars:100 }}</p>
 
-                <a type="button" href="{% url 'product' item.pk %}" class="btn btn-block btn-outline-primary">Купить</a>
-                <a type="button" href="{% url 'product_update' item.pk %}" class="btn btn-block btn-outline-primary">Обновить</a>
-                <a type="button" href="{% url 'product_delete' item.pk %}" class="btn btn-block btn-danger">Удалить</a>
+                <a type="button" href="{% url 'catalog:product' item.pk %}" class="btn btn-block btn-outline-primary">Купить</a>
+                <a type="button" href="{% url 'catalog:product_update' item.pk %}" class="btn btn-block btn-outline-primary">Обновить</a>
+                <a type="button" href="{% url 'catalog:product_delete' item.pk %}" class="btn btn-block btn-danger">Удалить</a>
               </div>
             </div>
             {%  endfor %}

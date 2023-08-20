@@ -22,23 +22,23 @@
         <div class="col-6 col-md">
             <h5>Категории</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="{% url 'catalog' %}">Рассылки</a></li>
-                <li><a class="text-muted" href="{% url 'catalog' %}">Телеграм боты</a></li>
-                <li><a class="text-muted" href="{% url 'catalog' %}">Полезные утилиты</a></li>
-                <li><a class="text-muted" href="{% url 'catalog' %}">Веб-приложения</a></li>
-                <li><a class="text-muted" href="{% url 'catalog' %}">Микросервисы</a></li>
+                <li><a class="text-muted" href="{% url 'catalog:catalog' %}">Рассылки</a></li>
+                <li><a class="text-muted" href="{% url 'catalog:catalog' %}">Телеграм боты</a></li>
+                <li><a class="text-muted" href="{% url 'catalog:catalog' %}">Полезные утилиты</a></li>
+                <li><a class="text-muted" href="{% url 'catalog:catalog' %}">Веб-приложения</a></li>
+                <li><a class="text-muted" href="{% url 'catalog:catalog' %}">Микросервисы</a></li>
             </ul>
         </div>
         <div class="col-6 col-md">
             <h5>Дополнительно</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="{% url 'catalog' %}">Мы пишем</a></li>
+                <li><a class="text-muted" href="{% url 'catalog:catalog' %}">Мы пишем</a></li>
             </ul>
         </div>
         <div class="col-6 col-md">
             <h5>О нас</h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="{% url 'contacts' %}">Контакты</a></li>
+                <li><a class="text-muted" href="{% url 'catalog:contacts' %}">Контакты</a></li>
             </ul>
         </div>
     </div>
