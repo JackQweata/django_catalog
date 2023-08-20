@@ -15,7 +15,6 @@ class StyleInputMix:
                 field.widget.attrs['class'] = 'form-control'
 
 
-
 class VersionForm(StyleInputMix, forms.ModelForm):
     class Meta:
         model = Version
@@ -26,7 +25,7 @@ class ProductForm(StyleInputMix, forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
-        extend = ('date_created', 'date_modified',)
+        exclude = ('date_created', 'date_modified', 'user', )
 
     def clean_name(self):
         name = self.cleaned_data.get('name').lower()

@@ -1,0 +1,20 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row text-start">
+        <div class="col-lg-9 col-md-6 col-sm-12">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Статус аккаунта</h4>
+                    </div>
+                    <div class="card-body">
+                        {%  if is_valid %}
+                        <h1 style="color: #00ff14;">Email подтвержден</h1>
+                        {% else %}
+                        <h1 style="color: #ff0000;">Ошибка</h1>
+                        {% endif %}
+                </div>
+        </div>
+    </div>
+{% endblock %}
