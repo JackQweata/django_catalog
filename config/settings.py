@@ -69,7 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'catalog.context_processors.get_site_data'
+                # 'catalog.context_processors.get_site_data'
             ],
         },
     },
@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'catalog_django_sky',
-        'USER': 'postgres',
-        'PASSWORD': '123',
-        'PORT': 5440
+        'NAME': os.getenv('BD_NAME'),
+        'USER': os.getenv('BD_USER'),
+        'PASSWORD': os.getenv('BD_PASSWORD'),
+        'PORT': os.getenv('BD_PORT')
     }
 }
 
@@ -159,8 +159,8 @@ EMAIL_HOST = 'smtp.yandex.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-EMAIL_HOST_USER = 'project.skypro@yandex.ru'
-EMAIL_HOST_PASSWORD = 'zjkibdkpeflxlouk'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 
 
 

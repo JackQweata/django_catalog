@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product, Version
+from catalog.serives import get_cache_category
 
 
 def contacts(request):
@@ -22,6 +23,11 @@ class OwnerRequiredMixin(UserPassesTestMixin):
 
 class ProductsListView(ListView):
     model = Product
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_list'] = get_cache_category()
+        return context
 
 
 class ProductDetailView(DetailView):

@@ -7,6 +7,8 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views import View
 from django.views.generic.edit import CreateView
+
+from config import settings
 from .forms import UserRegisterForm, PasswordResetForm
 from django.contrib.sites.shortcuts import get_current_site
 
@@ -33,7 +35,7 @@ class RegisterView(CreateView):
         verify_link = f'http://{current_site.domain}{verify_url}'
         mail_subject = 'Подтверждение регистрации'
 
-        send_mail(mail_subject, verify_link, 'project.skypro@yandex.ru', [user.email])
+        send_mail(mail_subject, verify_link, settings.EMAIL_HOST_USER, [user.email])
 
         return super().form_valid(form)
 
@@ -66,7 +68,7 @@ def password_reset(request):
 
                 mail_subject = 'Восстановление пароля'
                 message = f'Ваш новый пароль: {new_password}'
-                send_mail(mail_subject, message, 'project.skypro@yandex.ru', [user.email])
+                send_mail(mail_subject, message, settings.EMAIL_HOST_USER, [user.email])
 
                 return HttpResponse('Письмо с новым паролем отправлено на вашу почту.')
             else:
